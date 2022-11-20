@@ -1,0 +1,148 @@
+<!doctype html>
+<!--
+* Tabler - Premium and Open Source dashboard template with responsive and high quality UI.
+* @version 1.0.0-beta12
+* @link https://tabler.io
+* Copyright 2018-2022 The Tabler Authors
+* Copyright 2018-2022 codecalm.net Paweł Kuna
+* Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
+-->
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Privé</title>
+    <!-- CSS files -->
+    <link href="/assets/css/tabler.min.css" rel="stylesheet" />
+    <link href="/assets/css/tabler-flags.min.css" rel="stylesheet" />
+    <link href="/assets/css/tabler-payments.min.css" rel="stylesheet" />
+    <link href="/assets/css/tabler-vendors.min.css" rel="stylesheet" />
+    <link href="/assets/css/demo.min.css" rel="stylesheet" />
+    <style>
+        @import url('https://rsms.me/inter/inter.css');
+
+        :root {
+            --tblr-font-sans-serif: Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+        }
+    </style>
+</head>
+
+<body class="border-top-wide border-primary d-flex flex-column theme-light">
+    <script src="./dist/js/demo-theme.min.js"></script>
+    <div class="page page-center">
+        <div class="container container-tight py-4">
+            <div class="text-center mb-4">
+                <a href="." class="navbar-brand navbar-brand-autodark"><img src="/assets/static/logo.png" height="36"
+                        alt=""></a>
+            </div>
+            <div class="card card-md">
+                <div class="card-body">
+                    <h2 class="h2 text-center mb-4">Ingresa con tu cuenta</h2>
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" id="username" name="username" class="form-control"
+                                placeholder="tu@email.com" autocomplete="off">
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-label">
+                                Contraseña
+                                <span class="form-label-description">
+                                    <a href="./forgot-password.html">La olvidé ☹️</a>
+                                </span>
+                            </label>
+                            <div class="input-group input-group-flat">
+                                <input type="password" id="password" name="password" class="form-control"
+                                    placeholder="tu contraseña" autocomplete="off">
+                                <span class="input-group-text">
+                                    <a href="#" class="link-secondary" data-bs-toggle="tooltip"
+                                        aria-label="Show password">
+                                        <!-- Download SVG icon from http://tabler-icons.io/i/eye -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
+                                            viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                            stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                            <circle cx="12" cy="12" r="2"></circle>
+                                            <path
+                                                d="M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7">
+                                            </path>
+                                        </svg>
+                                    </a>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="mb-2">
+                            <label class="form-check">
+                                <input type="checkbox" class="form-check-input">
+                                <span class="form-check-label">Mantener sesión abierta</span>
+                            </label>
+                        </div>
+                        <div class="form-footer">
+                            <button type="submit" class="btn btn-primary w-100">Ingresar</button>
+                        </div>
+                    </form>
+                </div>
+                <div class="hr-text">También puedes iniciar sesión con ...</div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col"><a href="/accounts/facebook/login/" class="btn btn-white w-100 disabled">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/brand-github -->
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="icon icon-tabler icon-tabler-brand-facebook" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M7 10v4h3v7h4v-7h3l1 -4h-4v-2a1 1 0 0 1 1 -1h3v-4h-3a5 5 0 0 0 -5 5v2h-3">
+                                    </path>
+                                </svg>
+                                Facebook
+                            </a></div>
+
+                        <div class="col"><a href="#" class="btn btn-white w-100 disabled">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/brand-twitter -->
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="icon icon-tabler icon-tabler-brand-instagram" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <rect x="4" y="4" width="16" height="16" rx="4"></rect>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                    <line x1="16.5" y1="7.5" x2="16.5" y2="7.501"></line>
+                                </svg>
+                                Instagram
+                            </a></div>
+                        <div class="col"><a href="#" class="btn btn-white w-100 disabled">
+                                <!-- Download SVG icon from http://tabler-icons.io/i/brand-twitter -->
+                                <svg xmlns="http://www.w3.org/2000/svg"
+                                    class="icon icon-tabler icon-tabler-brand-google" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M17.788 5.108a9 9 0 1 0 3.212 6.892h-8"></path>
+                                </svg>
+                                Google
+                            </a></div>
+
+                    </div>
+
+                    <div class="text-center text-muted mt-3">
+                        <br>
+                        <a href="/registro" tabindex="-1">Regístrate</a>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- Libs JS -->
+    <!-- Tabler Core -->
+    <script src="./dist/js/tabler.min.js" defer=""></script>
+    <script src="./dist/js/demo.min.js" defer=""></script>
+
+</body>
+
+</html>
