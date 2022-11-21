@@ -1,286 +1,284 @@
 <!doctype html>
-<!--
-* Tabler - Premium and Open Source dashboard template with responsive and high quality UI.
-* @version 1.0.0-beta12
-* @link https://tabler.io
-* Copyright 2018-2022 The Tabler Authors
-* Copyright 2018-2022 codecalm.net Paweł Kuna
-* Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
--->
-<html lang="en">
+<html>
 
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Privé</title>
-    <!-- CSS files -->
-    <link href="/assets/css/tabler.min.css" rel="stylesheet" />
-    <link href="/assets/css/tabler-flags.min.css" rel="stylesheet" />
-    <link href="/assets/css/tabler-payments.min.css" rel="stylesheet" />
-    <link href="/assets/css/tabler-vendors.min.css" rel="stylesheet" />
-    <link href="/assets/css/demo.min.css" rel="stylesheet" />
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,shrink-to-fit=no">
+    <title>Blank</title>
     <style>
-        @import url('https://rsms.me/inter/inter.css');
+        #loader {
+            transition: all .3s ease-in-out;
+            opacity: 1;
+            visibility: visible;
+            position: fixed;
+            height: 100vh;
+            width: 100%;
+            background: #fff;
+            z-index: 90000
+        }
 
-        :root {
-            --tblr-font-sans-serif: Inter, -apple-system, BlinkMacSystemFont, San Francisco, Segoe UI, Roboto, Helvetica Neue, sans-serif;
+        #loader.fadeOut {
+            opacity: 0;
+            visibility: hidden
+        }
+
+        .spinner {
+            width: 40px;
+            height: 40px;
+            position: absolute;
+            top: calc(50% - 20px);
+            left: calc(50% - 20px);
+            background-color: #333;
+            border-radius: 100%;
+            -webkit-animation: sk-scaleout 1s infinite ease-in-out;
+            animation: sk-scaleout 1s infinite ease-in-out
+        }
+
+        @-webkit-keyframes sk-scaleout {
+            0% {
+                -webkit-transform: scale(0)
+            }
+
+            100% {
+                -webkit-transform: scale(1);
+                opacity: 0
+            }
+        }
+
+        @keyframes sk-scaleout {
+            0% {
+                -webkit-transform: scale(0);
+                transform: scale(0)
+            }
+
+            100% {
+                -webkit-transform: scale(1);
+                transform: scale(1);
+                opacity: 0
+            }
         }
     </style>
+    <script defer="defer" src="/assets/main.js"></script>
+    <link href="/assets/style.css" rel="stylesheet">
 </head>
 
-<body>
-    <script src="/assets/js/demo-theme.min.js"></script>
-    <div class="page">
-        <!-- Navbar -->
-        <div class="sticky-top">
-            <header class="navbar navbar-expand-md navbar-light sticky-top d-print-none">
-                <div class="container-xl">
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbar-menu">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <h1 class="navbar-brand navbar-brand-autodark d-none-navbar-horizontal pe-0 pe-md-3">
-                        <a href=".">
-                            <img src="/assets/logo.png" width="110" height="32" alt="Tabler" class="navbar-brand-image">
-                        </a>
-                    </h1>
-                    <div class="navbar-nav flex-row order-md-last">
-                        <div class="nav-item d-none d-md-flex me-3">
-                            <div class="btn-list">
-
-                            </div>
-                        </div>
-                        <div class="d-none d-md-flex">
-                            <a href="?theme=dark" class="nav-link px-0 hide-theme-dark" data-bs-toggle="tooltip"
-                                data-bs-placement="bottom" aria-label="Enable dark mode">
-                                <!-- Download SVG icon from http://tabler-icons.io/i/moon -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <path
-                                        d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z">
-                                    </path>
-                                </svg>
-                            </a>
-                            <a href="?theme=light" class="nav-link px-0 hide-theme-light" data-bs-toggle="tooltip"
-                                data-bs-placement="bottom" aria-label="Enable light mode">
-                                <!-- Download SVG icon from http://tabler-icons.io/i/sun -->
-                                <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                    viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                    stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <circle cx="12" cy="12" r="4"></circle>
-                                    <path
-                                        d="M3 12h1m8 -9v1m8 8h1m-9 8v1m-6.4 -15.4l.7 .7m12.1 -.7l-.7 .7m0 11.4l.7 .7m-12.1 -.7l-.7 .7">
-                                    </path>
-                                </svg>
-                            </a>
-
-                        </div>
-                        <div class="nav-item dropdown">
-
-                            <a href="#" class="nav-link d-flex lh-1 text-reset p-0" data-bs-toggle="dropdown"
-                                aria-label="Open user menu">
-                                <span class="avatar avatar-sm"
-                                    style="background-image: url(/assets/media/{{user.imagen}}"></span>
-                                <div class="d-none d-xl-block ps-2">
-                                    <div>{{user.get_full_name}}</div>
-                                    <div class="mt-1 small text-muted">{{user.email}}</div>
+<body class="app">
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+    <script>window.addEventListener("load", (function () { const t = document.getElementById("loader"); setTimeout((function () { t.classList.add("fadeOut") }), 300) }))</script>
+    <div>
+        <!-- #Left Sidebar ==================== -->
+        <div class="sidebar">
+            <div class="sidebar-inner">
+                <!-- ### $Sidebar Header ### -->
+                <div class="sidebar-logo">
+                    <div class="peers ai-c fxw-nw">
+                        <div class="peer peer-greed"><a class="sidebar-link td-n" href="index.html">
+                                <div class="peers ai-c fxw-nw">
+                                    <div class="peer">
+                                        <div class="logo"><img src="/assets/logo.png" alt=""></div>
+                                    </div>
+                                    <div class="peer peer-greed">
+                                        <h5 class="lh-1 mB-0 logo-text">Privé</h5>
+                                    </div>
                                 </div>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <a href="#" class="dropdown-item">Perfil</a>
-                                <div class="dropdown-divider"></div>
-                                <a href="#" class="dropdown-item">Preferencias</a>
-                                <a href="/salir" class="dropdown-item">Salir</a>
-                            </div>
+                            </a></div>
+                        <div class="peer">
+                            <div class="mobile-toggle sidebar-toggle"><a href="" class="td-n"><i
+                                        class="ti-arrow-circle-left"></i></a></div>
                         </div>
                     </div>
-                </div>
-            </header>
-            <div class="navbar-expand-md">
-                <div class="collapse navbar-collapse" id="navbar-menu">
-                    <div class="navbar navbar-light">
-                        <div class="container-xl">
-                            <ul class="navbar-nav">
-                                <li class="nav-item {{m1}}">
-                                    <a class="nav-link" href="/">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <!-- Download SVG icon from http://tabler-icons.io/i/home -->
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                                stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <polyline points="5 12 3 12 12 3 21 12 19 12"></polyline>
-                                                <path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-7"></path>
-                                                <path d="M9 21v-6a2 2 0 0 1 2 -2h2a2 2 0 0 1 2 2v6"></path>
-                                            </svg>
-                                        </span>
-                                        <span class="nav-link-title">
-                                            Inicio
-                                        </span>
-                                    </a>
-                                </li>
+                </div><!-- ### $Sidebar Menu ### -->
+                <ul class="sidebar-menu scrollable pos-r">
+                    <li class="nav-item mT-30 actived"><a class="sidebar-link" href="/"><span class="icon-holder"><i
+                                    class="c-blue-500 ti-home"></i> </span><span class="title">Portada</span></a></li>
 
 
-                                <li class="nav-item dropdown {{m3}}">
-                                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
-                                        data-bs-auto-close="outside" role="button" aria-expanded="false">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <!-- Download SVG icon from http://tabler-icons.io/i/package -->
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                class="icon icon-tabler icon-tabler-soccer-field" width="24" height="24"
-                                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                                stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <circle cx="12" cy="12" r="3"></circle>
-                                                <path d="M3 9h3v6h-3z"></path>
-                                                <path d="M18 9h3v6h-3z"></path>
-                                                <rect x="3" y="5" width="18" height="14" rx="2"></rect>
-                                                <line x1="12" y1="5" x2="12" y2="19"></line>
-                                            </svg>
-                                        </span>
-                                        <span class="nav-link-title">
-                                            Deportes
-                                        </span>
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        <div class="dropdown-menu-columns">
-                                            <div class="dropdown-menu-column">
-                                                <a class="dropdown-item" href="#">
-                                                    Clases y cursos
-                                                </a>
-                                                <a class="dropdown-item" href="/sports">
-                                                    Arriendo de canchas
-                                                </a>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </li>
-
-                                <li class="nav-item dropdown {{m5}}">
-                                    <a class="nav-link dropdown-toggle" href="#navbar-base" data-bs-toggle="dropdown"
-                                        data-bs-auto-close="outside" role="button" aria-expanded="false">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <!-- Download SVG icon from http://tabler-icons.io/i/package -->
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                class="icon icon-tabler icon-tabler-backhoe" width="24" height="24"
-                                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                                stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <circle cx="4" cy="17" r="2"></circle>
-                                                <circle cx="13" cy="17" r="2"></circle>
-                                                <line x1="13" y1="19" x2="4" y2="19"></line>
-                                                <line x1="4" y1="15" x2="13" y2="15"></line>
-                                                <path d="M8 12v-5h2a3 3 0 0 1 3 3v5"></path>
-                                                <path d="M5 15v-2a1 1 0 0 1 1 -1h7"></path>
-                                                <path d="M21.12 9.88l-3.12 -4.88l-5 5"></path>
-                                                <path
-                                                    d="M21.12 9.88a3 3 0 0 1 -2.12 5.12a3 3 0 0 1 -2.12 -.88l4.24 -4.24z">
-                                                </path>
-                                            </svg>
-                                        </span>
-                                        <span class="nav-link-title">
-                                            Maquinaria
-                                        </span>
-                                    </a>
-                                    <div class="dropdown-menu">
-                                        <div class="dropdown-menu-columns">
-                                            <div class="dropdown-menu-column">
-                                                <a class="dropdown-item" href="#">
-                                                    Necesito arrendar
-                                                </a>
-                                                <a class="dropdown-item" href="#">
-                                                    Tengo algo para arrendar
-                                                </a>
-
-                                            </div>
-
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="nav-item {{m2}}">
-                                    <a class="nav-link" href="#">
-                                        <span class="nav-link-icon d-md-none d-lg-inline-block">
-                                            <!-- Download SVG icon from http://tabler-icons.io/i/home -->
-                                            <svg xmlns="http://www.w3.org/2000/svg"
-                                                class="icon icon-tabler icon-tabler-report-money" width="24" height="24"
-                                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                                stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <path
-                                                    d="M9 5h-2a2 2 0 0 0 -2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2 -2v-12a2 2 0 0 0 -2 -2h-2">
-                                                </path>
-                                                <rect x="9" y="3" width="6" height="4" rx="2"></rect>
-                                                <path d="M14 11h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5"></path>
-                                                <path d="M12 17v1m0 -8v1"></path>
-                                            </svg>
-                                        </span>
-                                        <span class="nav-link-title">
-                                            Promociones
-                                        </span>
-                                    </a>
-                                </li>
-
-                            </ul>
-                            <div class="my-2 my-md-0 flex-grow-1 flex-md-grow-0 order-first order-md-last">
-                                <form action="" method="get" autocomplete="off" novalidate="">
-                                    <div class="input-icon">
-                                        <span class="input-icon-addon">
-                                            <!-- Download SVG icon from http://tabler-icons.io/i/search -->
-                                            <svg xmlns="http://www.w3.org/2000/svg" class="icon" width="24" height="24"
-                                                viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
-                                                stroke-linecap="round" stroke-linejoin="round">
-                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                <circle cx="10" cy="10" r="7"></circle>
-                                                <line x1="21" y1="21" x2="15" y2="15"></line>
-                                            </svg>
-                                        </span>
-                                        <input type="text" value="" class="form-control" placeholder="Busca algo ..."
-                                            aria-label="Search in website">
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="page-wrapper">
-            <!-- Page body -->
-            <div class="page-body">
-                <div class="container-xl d-flex flex-column justify-content-center">
-                    {% block _body %}
-
-                    {% endblock _body %}
-                </div>
-            </div>
-            <footer class="footer footer-transparent d-print-none">
-                <div class="container-xl">
-
-                    <div class="col-12 col-lg-auto mt-3 mt-lg-0">
-                        <ul class="list-inline list-inline-dots mb-0">
-                            <li class="list-inline-item">
-                                Copyright &copy; 2022
-                                <a href="#" class="link-secondary">Privé</a>.
-                                All rights reserved.
+                    <li class="nav-item dropdown"><a class="dropdown-toggle" href="javascript:void(0);"><span
+                                class="icon-holder"><i class="c-teal-500 ti-view-list-alt"></i> </span><span
+                                class="title">Multiple Levels</span> <span class="arrow"><i
+                                    class="ti-angle-right"></i></span></a>
+                        <ul class="dropdown-menu">
+                            <li class="nav-item dropdown"><a href="javascript:void(0);"><span>Menu Item</span></a></li>
+                            <li class="nav-item dropdown"><a href="javascript:void(0);"><span>Menu Item</span> <span
+                                        class="arrow"><i class="ti-angle-right"></i></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="javascript:void(0);">Menu Item</a></li>
+                                    <li><a href="javascript:void(0);">Menu Item</a></li>
+                                </ul>
                             </li>
-
                         </ul>
+                    </li>
+                </ul>
+            </div>
+        </div><!-- #Main ============================ -->
+        <div class="page-container">
+            <!-- ### $Topbar ### -->
+            <div class="header navbar">
+                <div class="header-container">
+                    <ul class="nav-left">
+                        <li><a id="sidebar-toggle" class="sidebar-toggle" href="javascript:void(0);"><i
+                                    class="ti-menu"></i></a></li>
+                        <li class="search-box"><a class="search-toggle no-pdd-right" href="javascript:void(0);"><i
+                                    class="search-icon ti-search pdd-right-10"></i> <i
+                                    class="search-icon-close ti-close pdd-right-10"></i></a></li>
+                        <li class="search-input"><input class="form-control" type="text" placeholder="Busca algo...">
+                        </li>
+                    </ul>
+                    <ul class="nav-right">
+                        <li class="notifications dropdown"><span class="counter bgc-red">3</span> <a href=""
+                                class="dropdown-toggle no-after" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                                aria-expanded="false"><i class="ti-bell"></i></a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li class="pX-20 pY-15 bdB"><i class="ti-bell pR-10"></i> <span
+                                        class="fsz-sm fw-600 c-grey-900">Notifications</span></li>
+                                <li>
+                                    <ul class="ovY-a pos-r scrollable lis-n p-0 m-0 fsz-sm">
+                                        <li><a href=""
+                                                class="peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100">
+                                                <div class="peer mR-15"><img class="w-3r bdrs-50p"
+                                                        src="https://randomuser.me/api/portraits/men/1.jpg" alt="">
+                                                </div>
+                                                <div class="peer peer-greed"><span><span class="fw-500">shjsdhjh</span>
+                                                        <span class="c-grey-600">liked your <span
+                                                                class="text-dark">post</span></span></span>
+                                                    <p class="m-0"><small class="fsz-xs">5 mins ago</small></p>
+                                                </div>
+                                            </a></li>
+                                        <li><a href=""
+                                                class="peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100">
+                                                <div class="peer mR-15"><img class="w-3r bdrs-50p"
+                                                        src="https://randomuser.me/api/portraits/men/2.jpg" alt="">
+                                                </div>
+                                                <div class="peer peer-greed"><span><span class="fw-500">Moo Doe</span>
+                                                        <span class="c-grey-600">liked your <span
+                                                                class="text-dark">cover image</span></span></span>
+                                                    <p class="m-0"><small class="fsz-xs">7 mins ago</small></p>
+                                                </div>
+                                            </a></li>
+                                        <li><a href=""
+                                                class="peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100">
+                                                <div class="peer mR-15"><img class="w-3r bdrs-50p"
+                                                        src="https://randomuser.me/api/portraits/men/3.jpg" alt="">
+                                                </div>
+                                                <div class="peer peer-greed"><span><span class="fw-500">Lee Doe</span>
+                                                        <span class="c-grey-600">commented on your <span
+                                                                class="text-dark">video</span></span></span>
+                                                    <p class="m-0"><small class="fsz-xs">10 mins ago</small></p>
+                                                </div>
+                                            </a></li>
+                                    </ul>
+                                </li>
+                                <li class="pX-20 pY-15 ta-c bdT"><span><a href=""
+                                            class="c-grey-600 cH-blue fsz-sm td-n">View All Notifications <i
+                                                class="ti-angle-right fsz-xs mL-10"></i></a></span></li>
+                            </ul>
+                        </li>
+                        <li class="notifications dropdown"><span class="counter bgc-blue">3</span> <a href=""
+                                class="dropdown-toggle no-after" id="dropdownMenuLink" data-bs-toggle="dropdown"
+                                aria-expanded="false"><i class="ti-email"></i></a>
+                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                <li class="pX-20 pY-15 bdB"><i class="ti-email pR-10"></i> <span
+                                        class="fsz-sm fw-600 c-grey-900">Emails</span></li>
+                                <li>
+                                    <ul class="ovY-a pos-r scrollable lis-n p-0 m-0 fsz-sm">
+                                        <li><a href=""
+                                                class="peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100">
+                                                <div class="peer mR-15"><img class="w-3r bdrs-50p"
+                                                        src="https://randomuser.me/api/portraits/men/1.jpg" alt="">
+                                                </div>
+                                                <div class="peer peer-greed">
+                                                    <div>
+                                                        <div class="peers jc-sb fxw-nw mB-5">
+                                                            <div class="peer">
+                                                                <p class="fw-500 mB-0">John Doe</p>
+                                                            </div>
+                                                            <div class="peer"><small class="fsz-xs">5 mins ago</small>
+                                                            </div>
+                                                        </div><span class="c-grey-600 fsz-sm">Want to create your own
+                                                            customized data generator for your app...</span>
+                                                    </div>
+                                                </div>
+                                            </a></li>
+                                        <li><a href=""
+                                                class="peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100">
+                                                <div class="peer mR-15"><img class="w-3r bdrs-50p"
+                                                        src="https://randomuser.me/api/portraits/men/2.jpg" alt="">
+                                                </div>
+                                                <div class="peer peer-greed">
+                                                    <div>
+                                                        <div class="peers jc-sb fxw-nw mB-5">
+                                                            <div class="peer">
+                                                                <p class="fw-500 mB-0">Moo Doe</p>
+                                                            </div>
+                                                            <div class="peer"><small class="fsz-xs">15 mins ago</small>
+                                                            </div>
+                                                        </div><span class="c-grey-600 fsz-sm">Want to create your own
+                                                            customized data generator for your app...</span>
+                                                    </div>
+                                                </div>
+                                            </a></li>
+                                        <li><a href=""
+                                                class="peers fxw-nw td-n p-20 bdB c-grey-800 cH-blue bgcH-grey-100">
+                                                <div class="peer mR-15"><img class="w-3r bdrs-50p"
+                                                        src="https://randomuser.me/api/portraits/men/3.jpg" alt="">
+                                                </div>
+                                                <div class="peer peer-greed">
+                                                    <div>
+                                                        <div class="peers jc-sb fxw-nw mB-5">
+                                                            <div class="peer">
+                                                                <p class="fw-500 mB-0">Lee Doe</p>
+                                                            </div>
+                                                            <div class="peer"><small class="fsz-xs">25 mins ago</small>
+                                                            </div>
+                                                        </div><span class="c-grey-600 fsz-sm">Want to create your own
+                                                            customized data generator for your app...</span>
+                                                    </div>
+                                                </div>
+                                            </a></li>
+                                    </ul>
+                                </li>
+                                <li class="pX-20 pY-15 ta-c bdT"><span><a href="email.html"
+                                            class="c-grey-600 cH-blue fsz-sm td-n">View All Email <i
+                                                class="fs-xs ti-angle-right mL-10"></i></a></span></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown"><a href="" class="dropdown-toggle no-after peers fxw-nw ai-c lh-1"
+                                id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                                <div class="peer mR-10"><img class="w-2r bdrs-50p"
+                                        src="https://randomuser.me/api/portraits/men/10.jpg" alt=""></div>
+                                <div class="peer"><span class="fsz-sm c-grey-900">{{user.get_full_name}}</span></div>
+                            </a>
+                            <ul class="dropdown-menu fsz-sm" aria-labelledby="dropdownMenuLink">
+
+                                <li><a href="/yo" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i
+                                            class="ti-user mR-10"></i> <span>Mi perfil</span></a></li>
+
+                                <li role="separator" class="divider"></li>
+                                <li><a href="/salir" class="d-b td-n pY-5 bgcH-grey-100 c-grey-700"><i
+                                            class="ti-power-off mR-10"></i> <span>Salir</span></a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div><!-- ### $App Screen Content ### -->
+            <main class="main-content bgc-grey-100">
+                <div id="mainContent">
+                    <div class="container-fluid">
+
+                        {% block _body %}
+
+                        {% endblock _body %}
                     </div>
                 </div>
+            </main><!-- ### $App Screen Footer ### -->
+            <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600"><span>Copyright © 2022 by <a href="#"
+                        title="">Privé</a>. All rights
+                    reserved.</span></footer>
         </div>
-        </footer>
     </div>
-    </div>
-    <!-- Libs JS -->
-    <!-- Tabler Core -->
-    <script src="/assets/js/tabler.min.js" defer></script>
-    <script src="/assets/js/demo.min.js" defer></script>
 </body>
 
 </html>
+<!doctype html>
